@@ -6,12 +6,12 @@
 
 "use strict"
 
-function factorial(n) {
+function factorial(number) {
   let result = 1
-  let i = 1
-  while (i <= n) {
-    result *= i
-    i++
+  let counter = 1
+  while (counter <= number) {
+    result *= counter
+    counter++
   }
   return result
 }
@@ -22,19 +22,31 @@ function calculateTrig() {
   const func = document.getElementById("functionChoice").value
 
   let result = 0
-  let n = 0
+  let termCount = 0
+  let sign = 1  // start positive
 
-  while (n < iterations) {
-    const sign = n % 2 === 0 ? 1 : -1
-    const exponent = func === "sin" ? 2 * n + 1 : 2 * n
-    const term = (sign * Math.pow(angle, exponent)) / factorial(exponent)
+  while (termCount < iterations) {
+    let exponent
+    if (func === "sin") {
+      exponent = 2 * termCount + 1
+    } else {
+      exponent = 2 * termCount
+    }
+
+    const term = sign * Math.pow(angle, exponent) / factorial(exponent)
     result += term
-    n++
+
+    // Flip the sign for next term:
+    if (sign === 1) {
+      sign = -1
+    } else {
+      sign = 1
+    }
+
+    termCount++
   }
 
-  document.getElementById(
-    "result"
-  ).innerHTML = `Estimated ${func}(${angle}) = ${result.toFixed(
-    6
-  )} using ${iterations} terms.`
+  document.getElementById("result").innerHTML =
+    "Estimated " + func + "(" + angle + ") = " + result.toFixed(6) +
+    " using " + iterations + " terms."
 }
