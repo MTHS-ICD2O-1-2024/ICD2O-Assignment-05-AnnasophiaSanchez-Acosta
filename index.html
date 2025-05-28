@@ -49,7 +49,7 @@
           <span class="mdl-layout-title">Estimating sine or cosine, in Js</span>
         </div>
       </header>
-      
+
       <div class="content-wrapper">
         <div class="text-section">
           <!-- your text/form goes here -->
@@ -58,81 +58,68 @@
           <img src="./images/trig-sine-cosine.jpg" alt="Labeled Triangle" />
         </div>
       </div>
-      
-      </div>
-      <main class="mdl-layout__content">
-        <main class="mdl-layout__content">
-          <div class="page-content">
-            Enter angle in degrees:
-            <div class="mdl-textfield mdl-js-textfield">
-              <input
-                class="mdl-textfield__input"
-                type="number"
-                id="angleInput"
-              />
-              <label class="mdl-textfield__label" for="angleInput"
-                >Angle (°)...</label
-              >
-            </div>
-
-            <br />
-            Enter number of loops:
-            <div class="mdl-textfield mdl-js-textfield">
-              <input
-                class="mdl-textfield__input"
-                type="number"
-                id="termsInput"
-              />
-              <label class="mdl-textfield__label" for="termsInput"
-                >Number...</label
-              >
-            </div>
-
-            <br />
-            Choose function:
-            <label
-              class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
-              for="sine"
-            >
-              <input
-                type="radio"
-                id="sine"
-                class="mdl-radio__button"
-                name="func"
-                value="sine"
-                checked
-              />
-              <span class="mdl-radio__label">Sine</span>
-            </label>
-            <label
-              class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
-              for="cosine"
-            >
-              <input
-                type="radio"
-                id="cosine"
-                class="mdl-radio__button"
-                name="func"
-                value="cosine"
-              />
-              <span class="mdl-radio__label">Cosine</span>
-            </label>
-            <br /><br />
-
-            <button
-              class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-              onclick="estimateTrig()"
-              type="button"
-            >
-              Estimate
-            </button>
-
-            <div class="page-content-answer">
-              <div id="result"></div>
-            </div>
-          </div>
-        </main>
-      </main>
     </div>
+    <main class="mdl-layout__content">
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          <h6>Enter angle in degrees:</h6>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="number" id="angleInput" />
+            <label class="mdl-textfield__label" for="angleInput"
+              >Angle (°)...</label
+            >
+          </div>
+
+          <br />
+          <h6>Enter number of loops:</h6>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="number" id="termsInput" />
+            <label class="mdl-textfield__label" for="termsInput"
+              >Number...</label
+            >
+          </div>
+
+          <br />
+          <h6>Choose function:</h6>
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="sine">
+            <input
+              type="radio"
+              id="sine"
+              class="mdl-radio__button"
+              name="func"
+              value="sine"
+              checked
+            />
+            <span class="mdl-radio__label">Sine</span>
+          </label>
+          <label
+            class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
+            for="cosine"
+          >
+            <input
+              type="radio"
+              id="cosine"
+              class="mdl-radio__button"
+              name="func"
+              value="cosine"
+            />
+            <span class="mdl-radio__label">Cosine</span>
+          </label>
+          <br /><br />
+
+          <button
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            onclick="estimateTrig()"
+            type="button"
+          >
+            Estimate
+          </button>
+
+          <div class="page-content-answer">
+            <div id="result"></div>
+          </div>
+        </div>
+      </main>
+    </main>
   </body>
 </html>

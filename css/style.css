@@ -6,6 +6,7 @@ mdl-layout__header-row {
   justify-content: center;
   padding: 15;
   padding-left: 50pt;
+  size: 26px;
 }
 
 .mdl-layout__content {
@@ -36,6 +37,8 @@ body {
 .right-image {
   max-width: 40%;
   margin-left: 20px;
+  padding-right: 15pt;
+  padding-top: 25pt;
 }
 
 p {
