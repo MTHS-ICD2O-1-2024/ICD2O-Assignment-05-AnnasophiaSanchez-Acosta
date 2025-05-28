@@ -6,47 +6,73 @@
 
 "use strict"
 
-function factorial(number) {
-  let result = 1
-  let counter = 1
-  while (counter <= number) {
-    result *= counter
-    counter++
-  }
-  return result
+// This function converts degrees to radians.
+function convertDegreesToRadians(degreeValue) {
+  return degreeValue * (Math.PI / 180)
 }
 
-function calculateTrig() {
-  const angle = parseFloat(document.getElementById("angle").value)
-  const iterations = parseInt(document.getElementById("iterations").value)
-  const func = document.getElementById("functionChoice").value
+// This function calculates the factorial of a number.
+function calculateFactorial(value) {
+  let factorialResult = 1
+  let counter = 1
+  while (counter <= value) {
+    factorialResult = factorialResult * counter
+    counter = counter + 1
+  }
+  return factorialResult
+}
 
-  let result = 0
-  let termCount = 0
-  let sign = 1  // start positive
+// This function estimates sine or cosine
+function estimateTrig() {
+  // Input
+  const angleInDegrees = parseFloat(document.getElementById("angleInput").value)
+  const numberOfTerms = parseInt(document.getElementById("termsInput").value)
+  const selectedFunction = document.querySelector(
+    'input[name="func"]:checked'
+  ).value
 
-  while (termCount < iterations) {
-    let exponent
-    if (func === "sin") {
-      exponent = 2 * termCount + 1
-    } else {
-      exponent = 2 * termCount
+  // Convert the angle from degrees to radians.
+  const angleInRadians = convertDegreesToRadians(angleInDegrees)
+
+  let estimatedValue = 0
+
+  let currentTermIndex = 0
+
+  // Repeat for the number of terms the user entered.
+  while (currentTermIndex < numberOfTerms) {
+    // Process each term based on the function selected (sine or cosine).
+    let termValue = 0
+
+    if (selectedFunction === "sine") {
+      const exponent = 2 * currentTermIndex + 1
+      const numerator = Math.pow(angleInRadians, exponent)
+      const denominator = calculateFactorial(exponent)
+      const sign = Math.pow(-1, currentTermIndex)
+      termValue = sign * (numerator / denominator)
+    } else if (selectedFunction === "cosine") {
+      const exponent = 2 * currentTermIndex
+      const numerator = Math.pow(angleInRadians, exponent)
+      const denominator = calculateFactorial(exponent)
+      const sign = Math.pow(-1, currentTermIndex)
+      termValue = sign * (numerator / denominator)
     }
 
-    const term = sign * Math.pow(angle, exponent) / factorial(exponent)
-    result += term
+    // Add the current term to the total estimated value.
+    estimatedValue = estimatedValue + termValue
 
-    // Flip the sign for next term:
-    if (sign === 1) {
-      sign = -1
-    } else {
-      sign = 1
-    }
-
-    termCount++
+    // Increase the counter to move to the next term in the series.
+    currentTermIndex = currentTermIndex + 1
   }
 
+  // Output
   document.getElementById("result").innerHTML =
-    "Estimated " + func + "(" + angle + ") = " + result.toFixed(6) +
-    " using " + iterations + " terms."
+    "Estimated " +
+    selectedFunction +
+    "(" +
+    angleInDegrees +
+    "°) = " +
+    estimatedValue +
+    " using " +
+    numberOfTerms +
+    " terms."
 }

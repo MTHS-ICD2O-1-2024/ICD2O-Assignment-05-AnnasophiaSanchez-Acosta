@@ -2,7 +2,10 @@
 <html lang="en-ca">
   <head>
     <meta charset="utf-8" />
-    <meta name="description" content="Estimating sine or cosine with loops, in JS" />
+    <meta
+      name="description"
+      content="Estimating sine or cosine with loops, in JS"
+    />
     <meta name="keywords" content="mths, icd2o" />
     <meta name="author" content="Annasophia" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,55 +51,61 @@
       </header>
 
       <main class="mdl-layout__content">
-        <div
-          class="page-content"
-          style="padding: 20px; max-width: 400px; margin: auto"
-        >
-          <p>Enter angle (in radians):</p>
+        <div class="page-content">
+          Enter angle in degrees:
           <div class="mdl-textfield mdl-js-textfield">
-            <input
-              class="mdl-textfield__input"
-              type="number"
-              step="any"
-              id="angle"
-              required
-            />
-            <label class="mdl-textfield__label" for="angle">Angle...</label>
+            <input class="mdl-textfield__input" type="number" id="angleInput" />
+            <label class="mdl-textfield__label" for="angleInput"
+              >Angle (°)...</label
+            >
           </div>
 
-          <p>Enter number of loops:</p>
+          Enter number of loops:
           <div class="mdl-textfield mdl-js-textfield">
-            <input
-              class="mdl-textfield__input"
-              type="number"
-              id="iterations"
-              min="1"
-              required
-            />
-            <label class="mdl-textfield__label" for="iterations"
+            <input class="mdl-textfield__input" type="number" id="termsInput" />
+            <label class="mdl-textfield__label" for="termsInput"
               >Number...</label
             >
           </div>
 
-          <p>Select function to estimate:</p>
-          <select
-            id="functionChoice"
-            class="mdl-textfield__input"
-            style="width: 100%; padding: 8px; margin-bottom: 20px"
+          Choose function:
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="sine">
+            <input
+              type="radio"
+              id="sine"
+              class="mdl-radio__button"
+              name="func"
+              value="sine"
+              checked
+            />
+            <span class="mdl-radio__label">Sine</span>
+          </label>
+          <label
+            class="mdl-radio mdl-js-radio mdl-js-ripple-effect"
+            for="cosine"
           >
-            <option value="sin">Sine</option>
-            <option value="cos">Cosine</option>
-          </select>
+            <input
+              type="radio"
+              id="cosine"
+              class="mdl-radio__button"
+              name="func"
+              value="cosine"
+            />
+            <span class="mdl-radio__label">Cosine</span>
+          </label>
+          <br /><br />
 
           <button
             class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-            onclick="calculateTrig()"
+            onclick="estimateTrig()"
             type="button"
           >
-            Calculate
+            Estimate
           </button>
 
-          <div id="result" ></div>
+          <div class="page-content-answer">
+            <div id="result"></div>
+          </div>
         </div>
       </main>
     </div>
