@@ -6,12 +6,16 @@
 
 'use strict'
 
-// This function converts degrees to radians.
+/**
+ * This function converts degrees to radians.
+ */
 function convertDegreesToRadians (degreeValue) {
   return degreeValue * (Math.PI / 180)
 }
 
-// This function calculates the factorial of a number.
+/** 
+ * This function calculates the factorial of a number.
+*/
 function calculateFactorial (value) {
   let factorialResult = 1
   let counter = 1
@@ -22,7 +26,9 @@ function calculateFactorial (value) {
   return factorialResult
 }
 
-// This function estimates sine or cosine
+/**
+ * This function estimates sine or cosine 
+*/
 function estimateTrig () {
   // Input
   const angleInDegrees = parseFloat(document.getElementById('angleInput').value)
