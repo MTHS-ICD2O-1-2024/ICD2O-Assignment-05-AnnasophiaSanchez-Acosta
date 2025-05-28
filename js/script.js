@@ -4,15 +4,15 @@
 // Created on: May 2025
 // This file contains the JS functions for index.html
 
-"use strict"
+'use strict'
 
 // This function converts degrees to radians.
-function convertDegreesToRadians(degreeValue) {
+function convertDegreesToRadians (degreeValue) {
   return degreeValue * (Math.PI / 180)
 }
 
 // This function calculates the factorial of a number.
-function calculateFactorial(value) {
+function calculateFactorial (value) {
   let factorialResult = 1
   let counter = 1
   while (counter <= value) {
@@ -23,10 +23,10 @@ function calculateFactorial(value) {
 }
 
 // This function estimates sine or cosine
-function estimateTrig() {
+function estimateTrig () {
   // Input
-  const angleInDegrees = parseFloat(document.getElementById("angleInput").value)
-  const numberOfTerms = parseInt(document.getElementById("termsInput").value)
+  const angleInDegrees = parseFloat(document.getElementById('angleInput').value)
+  const numberOfTerms = parseInt(document.getElementById('termsInput').value)
   const selectedFunction = document.querySelector(
     'input[name="func"]:checked'
   ).value
@@ -43,7 +43,7 @@ function estimateTrig() {
     // Process each term based on the function selected (sine or cosine).
     let termValue = 0
 
-    if (selectedFunction === "sine") {
+    if (selectedFunction === 'sine') {
       const exponent = 2 * currentTermIndex + 1
       const numerator = Math.pow(angleInRadians, exponent)
       const denominator = calculateFactorial(exponent)
@@ -65,14 +65,14 @@ function estimateTrig() {
   }
 
   // Output
-  document.getElementById("result").innerHTML =
-    "Estimated " +
+  document.getElementById('result').innerHTML =
+    'Estimated ' +
     selectedFunction +
-    "(" +
+    '(' +
     angleInDegrees +
-    "°) = " +
+    '°) = ' +
     estimatedValue +
-    " using " +
+    ' using ' +
     numberOfTerms +
-    " terms."
+    ' terms.'
 }
