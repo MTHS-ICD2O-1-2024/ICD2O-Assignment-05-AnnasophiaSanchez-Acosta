@@ -9,13 +9,13 @@ mdl-layout__header-row {
 }
 
 .mdl-layout__content {
-  padding-left: 40pt;
+  padding-left: 20pt;
   padding-right: 15pt;
-  padding-top: 15pt;
+  padding-top: 25pt;
 }
 
 .mdl-textfield__error {
-  color: rgb(125 85 199);
+  color: rgb(215, 46, 105);
 }
 
 .mdl-ripple {
@@ -27,10 +27,15 @@ body {
   background-color: rgb(212 179 239);
 }
 
-img {
-  float: right;
-  display: block;
-  height: 200px;
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.right-image {
+  max-width: 40%;
+  margin-left: 20px;
 }
 
 p {
