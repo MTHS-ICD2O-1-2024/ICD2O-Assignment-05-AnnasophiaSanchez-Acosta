@@ -9,27 +9,7 @@
 /**
  * This function converts degrees to radians.
  */
-function convertDegreesToRadians (degreeValue) {
-  return degreeValue * (Math.PI / 180)
-}
-
-/** 
- * This function calculates the factorial of a number.
-*/
-function calculateFactorial (value) {
-  let factorialResult = 1
-  let counter = 1
-  while (counter <= value) {
-    factorialResult = factorialResult * counter
-    counter = counter + 1
-  }
-  return factorialResult
-}
-
-/**
- * This function estimates sine or cosine 
-*/
-function estimateTrig () {
+function estimateTrig() {
   // Input
   const angleInDegrees = parseFloat(document.getElementById('angleInput').value)
   const numberOfTerms = parseInt(document.getElementById('termsInput').value)
@@ -37,36 +17,40 @@ function estimateTrig () {
     'input[name="func"]:checked'
   ).value
 
-  // Convert the angle from degrees to radians.
-  const angleInRadians = convertDegreesToRadians(angleInDegrees)
+  // Convert degrees to radians
+  const angleInRadians = angleInDegrees * (Math.PI / 180)
 
   let estimatedValue = 0
-
   let currentTermIndex = 0
 
-  // Repeat for the number of terms the user entered.
   while (currentTermIndex < numberOfTerms) {
-    // Process each term based on the function selected (sine or cosine).
-    let termValue = 0
-
+    let exponent
     if (selectedFunction === 'sine') {
-      const exponent = 2 * currentTermIndex + 1
-      const numerator = Math.pow(angleInRadians, exponent)
-      const denominator = calculateFactorial(exponent)
-      const sign = Math.pow(-1, currentTermIndex)
-      termValue = sign * (numerator / denominator)
-    } else if (selectedFunction === "cosine") {
-      const exponent = 2 * currentTermIndex
-      const numerator = Math.pow(angleInRadians, exponent)
-      const denominator = calculateFactorial(exponent)
-      const sign = Math.pow(-1, currentTermIndex)
-      termValue = sign * (numerator / denominator)
+      exponent = 2 * currentTermIndex + 1
+    } else {
+      exponent = 2 * currentTermIndex
     }
 
-    // Add the current term to the total estimated value.
-    estimatedValue = estimatedValue + termValue
+    let numerator = 1
+    let powerCounter = 0
+    while (powerCounter < exponent) {
+      numerator = numerator * angleInRadians
+      powerCounter = powerCounter + 1
+    }
 
-    // Increase the counter to move to the next term in the series.
+    let denominator = 1
+    let factCounter = 1
+    while (factCounter <= exponent) {
+      denominator = denominator * factCounter
+      factCounter = factCounter + 1
+    }
+
+    let sign = 1
+    if (currentTermIndex % 2 !== 0) {
+      sign = -1
+    }
+
+    estimatedValue = estimatedValue + (sign * numerator) / denominator
     currentTermIndex = currentTermIndex + 1
   }
 
