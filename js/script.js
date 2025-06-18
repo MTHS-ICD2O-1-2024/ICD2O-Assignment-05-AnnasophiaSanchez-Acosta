@@ -9,7 +9,8 @@
 /**
  * This function converts degrees to radians.
  */
-function estimateTrig() {
+// eslint-disable-next-line no-unused-vars
+function estimateTrig () {
   // Input
   const angleInDegrees = parseFloat(document.getElementById('angleInput').value)
   const numberOfTerms = parseInt(document.getElementById('termsInput').value)
